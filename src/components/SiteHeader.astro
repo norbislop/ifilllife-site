@@ -1,0 +1,20 @@
+---
+import Brand from './Brand.astro';
+import { withBase } from '../lib/paths';
+import { services } from '../data/services';
+
+const journalActive = Astro.url.pathname.includes('/journal/');
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <Brand />
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href={withBase('#topics')}>Explore</a>
+      <a href={withBase('journal/')} aria-current={journalActive ? 'page' : undefined}>Journal</a>
+      {services.length > 0 && <a href={withBase('#services')}>Services</a>}
+      <a href={withBase('#about')}>Our purpose</a>
+    </nav>
+    <a class="header-link" href={withBase('journal/')}>Start reading <span aria-hidden="true">↗</span></a>
+  </div>
+</header>

@@ -1,0 +1,20 @@
+---
+import Brand from './Brand.astro';
+import { site } from '../config/site';
+import { withBase } from '../lib/paths';
+---
+
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div><Brand /><p>{site.tagline}</p></div>
+    <nav aria-label="Footer navigation">
+      <a href={withBase('journal/')}>Journal</a>
+      <a href={withBase('#about')}>Our purpose</a>
+      {site.contactEmail && <a href={`mailto:${site.contactEmail}`}>Get in touch</a>}
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <small>© {new Date().getFullYear()} {site.name}</small>
+    <small>A little more perspective. One day at a time.</small>
+  </div>
+</footer>

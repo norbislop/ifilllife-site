@@ -1,0 +1,21 @@
+---
+import { home } from '../data/home';
+---
+
+<section class="section section-topics" id="topics" aria-labelledby="topics-heading">
+  <div class="container">
+    <div class="section-heading">
+      <div><p class="eyebrow">{home.topics.eyebrow}</p><h2 id="topics-heading">{home.topics.heading}</h2></div>
+      <p>{home.topics.description}</p>
+    </div>
+    <div class="topic-grid">
+      {home.topics.items.map((topic) => (
+        <article class="topic-card">
+          <div class="topic-top"><span>{topic.number}</span><span class="topic-symbol" aria-hidden="true">{topic.symbol}</span></div>
+          <h3>{topic.title}</h3>
+          <p>{topic.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

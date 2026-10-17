@@ -1,0 +1,13 @@
+---
+import { site } from '../config/site';
+import { withBase } from '../lib/paths';
+---
+
+<a class="brand" href={withBase()} aria-label={`${site.name} home`}>
+  <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+    <rect width="40" height="40" rx="12" fill="currentColor" />
+    <path d="M12 12h7v7h-7zm9 0h7v7h-7zm-9 9h7v7h-7zm9 0h7v7h-7z" fill="var(--color-paper)" />
+    <path d="M21 21h7v7h-7z" fill="var(--color-accent)" />
+  </svg>
+  <span>{site.name}</span>
+</a>

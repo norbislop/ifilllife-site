@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getPublishedEntries } from '../../lib/journal';
+
+const entries = await getPublishedEntries();
+---
+
+<BaseLayout title="The journal | iFillLife" description="Short reads and thoughtful starting points for everyday decisions.">
+  <section class="container page-intro" aria-labelledby="journal-title">
+    <p class="eyebrow">A little room to think</p>
+    <h1 id="journal-title">The <em>journal.</em></h1>
+    <p>Ideas to sit with. Questions to carry with you. A place to find your next small beginning.</p>
+  </section>
+  <section class="container journal-list" aria-label="Journal articles">
+    {entries.length > 0 ? <div class="article-grid">{entries.map((entry, index) => <ArticleCard entry={entry} index={index} />)}</div> : <p class="empty-state">The first stories are taking shape. Check back soon.</p>}
+  </section>
+</BaseLayout>

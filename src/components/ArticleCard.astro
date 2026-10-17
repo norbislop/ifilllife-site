@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { withBase } from '../lib/paths';
+
+interface Props { entry: CollectionEntry<'journal'>; index?: number }
+const { entry, index = 0 } = Astro.props;
+---
+
+<article class:list={['article-card', { 'article-card-alt': index % 2 !== 0 }]}>
+  <div class="article-card-top"><span class="eyebrow">{entry.data.category}</span><span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span></div>
+  <h3><a href={withBase(`journal/${entry.id}/`)}>{entry.data.title}<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
+  <p>{entry.data.description}</p>
+  <span class="article-card-bottom" aria-hidden="true">Read the story <span>→</span></span>
+</article>

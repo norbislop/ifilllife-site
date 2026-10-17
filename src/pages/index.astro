@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Topics from '../components/Topics.astro';
+import JournalPreview from '../components/JournalPreview.astro';
+import Services from '../components/Services.astro';
+import { home } from '../data/home';
+import { withBase } from '../lib/paths';
+---
+
+<BaseLayout>
+  <Hero />
+  <Topics />
+  <JournalPreview />
+  <section class="section about-section" id="about" aria-labelledby="about-heading">
+    <div class="container about-grid">
+      <div><p class="eyebrow">{home.about.eyebrow}</p><h2 id="about-heading">{home.about.heading}</h2><span class="about-flower" aria-hidden="true">✳</span></div>
+      <div class="about-copy">{home.about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}<p class="about-note">{home.about.note}</p></div>
+    </div>
+  </section>
+  <Services />
+  <section class="container closing-section" aria-labelledby="closing-heading">
+    <p class="eyebrow">{home.closing.eyebrow}</p>
+    <h2 id="closing-heading">{home.closing.heading}</h2>
+    <p>{home.closing.description}</p>
+    <a class="button" href={withBase(home.closing.href)}>{home.closing.label}<span aria-hidden="true">↗</span></a>
+  </section>
+</BaseLayout>
